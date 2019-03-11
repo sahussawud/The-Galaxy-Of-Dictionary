@@ -2,7 +2,7 @@ var c = document.getElementById("c");
 var ctx = c.getContext("2d");
 var input = document.getElementById("input");
 var ig = false;
-var times = [30000, 60000, 90000, 120000],
+var times = [60000, 60000, 90000, 120000],
 	timeSelector = 0;
 var multiplier = [2, 1, 0.75, 0.5];
 var startTime = 0,
@@ -14,8 +14,8 @@ var secret = "SmVzc2ljYQ==";
 var enemies = [],
 	enemyWords = [];
 var enemySpeed = 0.3;
-var generatorNumber = 0.02,
-	maxGeneratorNumber = 0.2;
+var generatorNumber = 0.02;
+	maxGeneratorNumber = 2;
 var value = "";
 var score = 0;
 var cpm = 0,
@@ -56,7 +56,7 @@ function clear() {
 	}
 }
 function smallExplosion() {
-	for(var i = 0; i < 10; i++) {
+	for(var i = 0; i < 100; i++) {
 		//x, y, sideMovement, downSpeed
 		smallSparks.push([
 			storedX, 
@@ -67,7 +67,7 @@ function smallExplosion() {
 	}
 }
 function bigExplosion() {
-	for(var i = 0; i < 50; i++) {
+	for(var i = 0; i < 500; i++) {
 		largeSparks.push([
 			Math.random() * c.width,
 			-Math.random() * 25,
@@ -80,18 +80,17 @@ function bigExplosion() {
 function generate() {
 	//x
 	enemies.push(
-		Math.random() * (c.width - 400) + 200
+		Math.random() * (c.width - 550) + 200
 	);
 	//word
 	enemyWords.push(
 		words[Math.floor(Math.random() * words.length)]
 	);
 }
-//lazer
 function laze() {
 	if(laser) {
 		ctx.strokeStyle = "#f00";
-		ctx.lineWidth = 10;
+		ctx.lineWidth = 8;
 		ctx.beginPath();
 		ctx.moveTo(c.width / 2, c.height - 100);
 		ctx.lineTo(storedX, y);
@@ -270,10 +269,10 @@ function draw() {
 	}
 	if(ig) {
 		laze();
-		ctx.font = "32px 'Press Start 2P'";
+		ctx.font = " 32px 'Press Start 2P'";
 		ctx.fillStyle = "#fff";
-		ctx.fillText(value, c.width / 2 - 12, c.height - 51);
-		ctx.font = "24px 'Press Start 2P'";
+		ctx.fillText(value, c.width / 2 - 12, c.height - 45);
+		ctx.font = "32px 'Press Start 2P'";
 		for(var i = enemies.length - 1; i > -1; i--) {
 			if(i < 1) {
 				if(enemyWords[i].length < 12) 
@@ -293,27 +292,11 @@ function draw() {
 				ctx.fillText(enemyWords[i][0], enemies[i], i * -24 + y);
 		}
 	}
-	ctx.font = "30px 'Press Start 2P'";
+	ctx.font = "32px 'Press Start 2P'";
 	ctx.fillStyle = "#ff0";
-	percentage = Math.round((hit / full) * 10000) / 100;
-	if(percentage > 100) 
-		percentage = 100;
-	if(isNaN(percentage)) 
-		percentage = 0;
-	/*percentageText = percentage + "%";
-	ctx.fillText(percentageText, c.width - percentageText.length * 18 - 16, 36);
-	ctx.fillStyle = "#f00";
-	ctx.fillText(storage.highpercentYaeQam + "%", c.width - (storage.highpercentYaeQam.length + 1) * 18 - 16, 72);
-	ctx.fillStyle = "#0f0";*/
-	ctx.fillText(score, c.width - score.toString().length * 18 - 20, c.height - 36);
+	ctx.fillText(score, c.width - score.toString().length * 18 - 80, c.height - 80);
 	ctx.fillStyle = "#0f0";
-	ctx.fillText(score, c.width - score.toString().length * 18 - 20, c.height - 36);
-	ctx.fillStyle = "#0ff";
-	/*ctx.fillText(storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 4, c.height - 4);
-	ctx.fillStyle = "#a000c0";
-	ctx.fillText(cpm, 0, c.height - 36);
-	ctx.fillStyle = "#00a0ff";
-	ctx.fillText(storage.highcpmYaeQam, 0, c.height - 4);*/
+	ctx.fillText(storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 50, c.height - 36);
 	if(ig) {
 		ctx.fillStyle = "#ffa500";
 		ctx.fillText(Math.round((endTime - new Date().getTime()) / 1000), 4, 36);
@@ -323,12 +306,12 @@ function draw() {
 		ctx.fillText(times[timeSelector] / 1000, 4, 36);
 	}
 	if(!ig) {
-		ctx.font = "40px 'Press Start 2P'";
+		ctx.font = "64px 'Press Start 2P'";
 		ctx.fillStyle = "#fff";
-		ctx.fillText("Press SPACE to start! ", c.width / 2 - 400, c.height / 2 + 24);
+		ctx.fillText("Press SPACE to start ", c.width / 2 - 600, c.height / 2 + 24);
 	}
 }
 draw();
 window.oncontextmenu = function() {
 	return false;
-};
+}
