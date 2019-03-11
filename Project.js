@@ -106,7 +106,7 @@ function test() {
 		if(enemyWords[0].length < 12) {
 			if(value === enemyWords[0].substr(0, 1)) {
 				enemyWords[0] = enemyWords[0].substr(1);
-				score += 1 * multiplier[timeSelector];
+				score += 2 * multiplier[timeSelector];
 				done++;
 				laser = true;
 				storedX = enemies[0];
@@ -114,7 +114,10 @@ function test() {
 				hit++;
 			}
 			else 
-				score -= 2 * multiplier[timeSelector];
+				if(score > 0){
+					score -= 1 * multiplier[timeSelector];
+				}
+				
 			full++;
 		}
 		else {
@@ -124,7 +127,7 @@ function test() {
 				done++;
 				hit++;
 			}
-			else 
+			else
 				score -= 2000000;
 			full++;
 		}
@@ -159,7 +162,9 @@ function update() {
 			if(i * -24 + y >= c.height - 150) {
 				enemies.splice(i, 1);
 				enemyWords.splice(i, 1);
-				score -= 5;
+				if(score > 0){
+					score -= 4;
+				}
 				if(enemyWords[i].length < 12) 
 					full += enemyWords[i].length;
 				else 
@@ -294,21 +299,21 @@ function draw() {
 	}
 	ctx.font = "32px 'Press Start 2P'";
 	ctx.fillStyle = "#ff0";
-	ctx.fillText(score, c.width - score.toString().length * 18 - 80, c.height - 80);
+	ctx.fillText("Score : " + score, c.width - score.toString().length * 18 - 400, c.height - 80);
 	ctx.fillStyle = "#0f0";
-	ctx.fillText(storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 50, c.height - 36);
+	ctx.fillText("High Score : "+storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 550, c.height - 36);
 	if(ig) {
 		ctx.fillStyle = "#ffa500";
-		ctx.fillText(Math.round((endTime - new Date().getTime()) / 1000), 4, 36);
+		ctx.fillText(Math.round((endTime - new Date().getTime()) / 1000)+ "s", 4, 36);
 	}
 	else {
 		ctx.fillStyle = "#ffa500";
-		ctx.fillText(times[timeSelector] / 1000, 4, 36);
+		ctx.fillText(times[timeSelector] / 1000 + "s", 4, 36);
 	}
 	if(!ig) {
 		ctx.font = "64px 'Press Start 2P'";
 		ctx.fillStyle = "#fff";
-		ctx.fillText("Press SPACE to start ", c.width / 2 - 600, c.height / 2 + 24);
+		ctx.fillText("Press SPACE to start! ", c.width / 2 - 600, c.height / 2 + 24);
 	}
 }
 draw();
