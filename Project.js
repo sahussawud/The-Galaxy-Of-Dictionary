@@ -311,9 +311,15 @@ function draw() {
 		ctx.fillText(times[timeSelector] / 1000 + " s", 4, 36);
 	}
 	if(!ig) {
-		ctx.font = "64px 'Press Start 2P'";
+		ctx.font = "24px 'Press Start 2P'";
 		ctx.fillStyle = "#fff";
-		ctx.fillText("Press SPACE to start! ", c.width / 2 - 600, c.height / 2 + 24);
+		ctx.fillText("Press SPACE to start! ", c.width / 2 - 250, c.height / 2 + 94);
+	}
+	if(!ig) {
+		ctx.font = "48px 'Press Start 2P'";
+		ctx.fillStyle = "#0000CD";
+		ctx.fillText("THE GALAXY OF DICTIONARY", c.width / 2 - 560, c.height / 2 + 24);
+		ctx.fillStyle = ""
 	}
 }
 draw();
