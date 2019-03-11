@@ -13,9 +13,9 @@ var words = ["the", "of", "to", "and", "a", "in", "is", "it", "you", "that", "he
 var secret = "SmVzc2ljYQ==";
 var enemies = [],
 	enemyWords = [];
-var enemySpeed = 0.3;
-var generatorNumber = 0.02;
-	maxGeneratorNumber = 2;
+var enemySpeed = 0.35;
+var generatorNumber = 1;
+	maxGeneratorNumber = 5;
 var value = "";
 var score = 0;
 var cpm = 0,
@@ -154,8 +154,8 @@ function update() {
 			else 
 				generate();
 			if(generatorNumber < maxGeneratorNumber) 
-				generatorNumber += 0.0001;
-			enemySpeed += 0.002;
+				generatorNumber += 1;
+			enemySpeed += 0.0000001;
 		}
 		y += enemySpeed;
 		for(var i = enemies.length - 1; i > -1; i--) {
@@ -235,8 +235,8 @@ function update() {
 			input.value = "";
 			enemies = [];
 			enemyWords = [];
-			generatorNumber = 0.02;
-			enemySpeed = 0.3;
+			generatorNumber = 1;
+			enemySpeed = 0.35;
 			cpm = 0;
 			done = 0;
 			y = 0;
@@ -301,7 +301,7 @@ function draw() {
 	ctx.fillStyle = "#ff0";
 	ctx.fillText("Score: " + score, c.width - score.toString().length * 18 - 310, c.height - 80);
 	ctx.fillStyle = "#0f0";
-	ctx.fillText("High Score: "+storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 500, c.height - 36);
+	ctx.fillText("High Score: "+storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 450, c.height - 36);
 	if(ig) {
 		ctx.fillStyle = "#ffa500";
 		ctx.fillText(Math.round((endTime - new Date().getTime()) / 1000)+ " s", 4, 36);
