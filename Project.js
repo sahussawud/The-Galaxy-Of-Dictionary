@@ -33,6 +33,7 @@ var sx = [],
 	sy = [],
 	sc = [],
 	ss = [];
+
 for(var i = 0; i < 250; i++) {
 	sx.push(Math.random() * window.innerWidth);
 	sy.push(Math.random() * window.innerHeight);
@@ -65,6 +66,7 @@ function smallExplosion() {
 			Math.random() * 25 + 5
 		]);
 	}
+
 }
 function bigExplosion() {
 	for(var i = 0; i < 500; i++) {
@@ -322,6 +324,7 @@ function draw() {
 		ctx.fillStyle = ""
 	}
 }
+
 draw();
 window.oncontextmenu = function() {
 	return false;
