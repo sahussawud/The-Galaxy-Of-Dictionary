@@ -33,6 +33,7 @@ var sx = [],
 	sy = [],
 	sc = [],
 	ss = [];
+
 for(var i = 0; i < 250; i++) {
 	sx.push(Math.random() * window.innerWidth);
 	sy.push(Math.random() * window.innerHeight);
@@ -65,6 +66,7 @@ function smallExplosion() {
 			Math.random() * 25 + 5
 		]);
 	}
+
 }
 function bigExplosion() {
 	for(var i = 0; i < 500; i++) {
@@ -316,6 +318,7 @@ function draw() {
 		ctx.fillText("Press SPACE to start! ", c.width / 2 - 600, c.height / 2 + 24);
 	}
 }
+
 draw();
 window.oncontextmenu = function() {
 	return false;
