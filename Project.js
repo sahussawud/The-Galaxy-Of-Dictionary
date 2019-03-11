@@ -299,18 +299,9 @@ function draw() {
 				ctx.fillText(enemyWords[i][0], enemies[i], i * -24 + y);
 		}
 	}
-	ctx.font = "32px 'Press Start 2P'";
-	ctx.fillStyle = "#ff0";
-	ctx.fillText("Score: " + score, c.width - score.toString().length * 18 - 310, c.height - 80);
-	ctx.fillStyle = "#0f0";
-	ctx.fillText("High Score: "+storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 450, c.height - 36);
 	if(ig) {
 		ctx.fillStyle = "#ffa500";
 		ctx.fillText(Math.round((endTime - new Date().getTime()) / 1000)+ " s", 4, 36);
-	}
-	else {
-		ctx.fillStyle = "#ffa500";
-		ctx.fillText(times[timeSelector] / 1000 + " s", 4, 36);
 	}
 	if(!ig) {
 		ctx.font = "24px 'Press Start 2P'";
@@ -322,6 +313,13 @@ function draw() {
 		ctx.fillStyle = "#0000CD";
 		ctx.fillText("THE GALAXY OF DICTIONARY", c.width / 2 - 560, c.height / 2 + 24);
 		ctx.fillStyle = ""
+	}
+	else{
+		ctx.font = "32px 'Press Start 2P'";
+		ctx.fillStyle = "#ff0";
+		ctx.fillText("Score: " + score, c.width - score.toString().length * 18 - 310, c.height - 80);
+		ctx.fillStyle = "#0f0";
+		ctx.fillText("High Score: "+storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 450, c.height - 36);
 	}
 }
 
