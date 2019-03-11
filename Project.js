@@ -299,16 +299,16 @@ function draw() {
 	}
 	ctx.font = "32px 'Press Start 2P'";
 	ctx.fillStyle = "#ff0";
-	ctx.fillText("Score : " + score, c.width - score.toString().length * 18 - 400, c.height - 80);
+	ctx.fillText("Score: " + score, c.width - score.toString().length * 18 - 310, c.height - 80);
 	ctx.fillStyle = "#0f0";
-	ctx.fillText("High Score : "+storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 550, c.height - 36);
+	ctx.fillText("High Score: "+storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 500, c.height - 36);
 	if(ig) {
 		ctx.fillStyle = "#ffa500";
-		ctx.fillText(Math.round((endTime - new Date().getTime()) / 1000)+ "s", 4, 36);
+		ctx.fillText(Math.round((endTime - new Date().getTime()) / 1000)+ " s", 4, 36);
 	}
 	else {
 		ctx.fillStyle = "#ffa500";
-		ctx.fillText(times[timeSelector] / 1000 + "s", 4, 36);
+		ctx.fillText(times[timeSelector] / 1000 + " s", 4, 36);
 	}
 	if(!ig) {
 		ctx.font = "64px 'Press Start 2P'";
