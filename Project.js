@@ -33,7 +33,13 @@ var sx = [],
 	sy = [],
 	sc = [],
 	ss = [];
+var soundFX;
+var shot;
 
+function preload(){
+	soundFX = new Audio('./Lazerbeam3.wav');
+}
+preload();
 for(var i = 0; i < 250; i++) {
 	sx.push(Math.random() * window.innerWidth);
 	sy.push(Math.random() * window.innerHeight);
@@ -64,7 +70,9 @@ function smallExplosion() {
 			storedY,
 			Math.random() * 8 - 4,
 			Math.random() * 25 + 5
+
 		]);
+			soundFX.play();
 	}
 
 }
