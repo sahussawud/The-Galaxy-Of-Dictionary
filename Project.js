@@ -282,10 +282,10 @@ function draw() {
 		ctx.font = "32px 'Press Start 2P'";
 		for(var i = enemies.length - 1; i > -1; i--) {
 			if(i < 1) {
-				if(enemyWords[i].length < 12) 
-					ctx.fillStyle = "#0f0";
+				if(enemyWords[i].length < 12)
+					ctx.fillStyle = "#f1bdf1";
 				else 
-					ctx.fillStyle = "#c030e0";
+					ctx.fillStyle = "#c03f0e0";
 			}
 			else {
 				if(enemyWords[i].length < 12) 
@@ -300,25 +300,36 @@ function draw() {
 		}
 	}
 	if(ig) {
+		ctx.shadowColor="red";
+		ctx.shadowBlur=10;
+		ctx.lineWidth=5;
+		ctx.fillStyle = "#8fcae4";
 		ctx.fillStyle = "#ffa500";
 		ctx.fillText(Math.round((endTime - new Date().getTime()) / 1000)+ " s", 4, 36);
 	}
 	if(!ig) {
 		ctx.font = "24px 'Press Start 2P'";
-		ctx.fillStyle = "#fff";
+		ctx.shadowColor="#caef62";
+		ctx.shadowBlur=10;
+		ctx.lineWidth=5;
+		ctx.fillStyle = "#8fcae4";
+		ctx.fillStyle = "#2c2a56";
 		ctx.fillText("Press SPACE to start! ", c.width / 2 - 250, c.height / 2 + 94);
 	}
 	if(!ig) {
 		ctx.font = "48px 'Press Start 2P'";
-		ctx.fillStyle = "#0000CD";
-		ctx.fillText("THE GALAXY OF DICTIONARY", c.width / 2 - 560, c.height / 2 + 24);
-		ctx.fillStyle = ""
+		ctx.shadowColor="red";
+		ctx.shadowBlur=10;
+		ctx.lineWidth=5;
+		ctx.fillStyle = "#8fcae4";
+		ctx.fillText("THE GALAXY OF DICTIONARY", c.width / 2 - 560, c.height / 2 + 24, );
+
 	}
 	else{
 		ctx.font = "32px 'Press Start 2P'";
 		ctx.fillStyle = "#ff0";
 		ctx.fillText("Score: " + score, c.width - score.toString().length * 18 - 310, c.height - 80);
-		ctx.fillStyle = "#0f0";
+		ctx.fillStyle = "#FF6347";
 		ctx.fillText("High Score: "+storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 450, c.height - 36);
 	}
 }
