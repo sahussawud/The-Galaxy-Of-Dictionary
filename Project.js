@@ -66,7 +66,7 @@ function smallExplosion() {
 	for(var i = 0; i < 100; i++) {
 		//x, y, sideMovement, downSpeed
 		smallSparks.push([
-			storedX, 
+			storedX,
 			storedY,
 			Math.random() * 8 - 4,
 			Math.random() * 25 + 5
