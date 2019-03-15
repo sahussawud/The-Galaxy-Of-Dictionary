@@ -70,7 +70,6 @@ function smallExplosion() {
 			storedY,
 			Math.random() * 8 - 4,
 			Math.random() * 25 + 5
-
 		]);
 			soundFX.play();
 	}
@@ -336,7 +335,7 @@ function draw() {
 	else{
 		ctx.font = "32px 'Press Start 2P'";
 		ctx.fillStyle = "#ff0";
-		ctx.fillText("Score: " + score, c.width - score.toString().length * 18 - 300, c.height - 80);
+		ctx.fillText("Score: " + score, c.width - score.toString().length * 18 - 310, c.height - 80);
 		ctx.fillStyle = "#FF6347";
 		ctx.fillText("High Score: "+storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 450, c.height - 36);
 	}
