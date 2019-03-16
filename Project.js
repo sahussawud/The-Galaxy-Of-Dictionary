@@ -30,6 +30,7 @@ var smallSparks = [],
 	largeSparks = [];
 var sx = [],
 	sy = [],
+	sc = [],
 	ss = [];
 var soundFX;
 var shot;
@@ -38,11 +39,28 @@ function preload(){
 	soundFX = new Audio('./Lazerbeam3.wav');
 }
 preload();
-if(typeof storage.highscoreYaeQam === "undefined")
+for(var i = 0; i < 250; i++) {
+	sx.push(Math.random() * window.innerWidth);
+	sy.push(Math.random() * window.innerHeight);
+	sc.push("rgb(" + Math.floor(Math.random() * 55) + 200 + ", " + Math.floor(Math.random() * 55) + 200 + ", " + Math.floor(Math.random() * 55) + 200 + ")");
+	ss.push(Math.random());
+}
+if(typeof storage.highscoreYaeQam === "undefined") 
 	storage.highscoreYaeQam = 0;
+if(typeof storage.highcpmYaeQam === "undefined") 
+	storage.highcpmYaeQam = 0;
+if(typeof storage.highpercentYaeQam === "undefined") 
+	storage.highpercentYaeQam = 0;
+
 function clear() {
 	c.width = window.innerWidth;
 	c.height = window.innerHeight;
+	for(var i = 0; i < ss.length; i++) {
+		ctx.beginPath();
+		ctx.fillStyle = sc[i];
+		ctx.arc(sx[i], sy[i], ss[i], 0, 2 * Math.PI);
+		ctx.fill();
+	}
 }
 function smallExplosion() {
 	for(var i = 0; i < 100; i++) {
@@ -52,7 +70,6 @@ function smallExplosion() {
 			storedY,
 			Math.random() * 8 - 4,
 			Math.random() * 25 + 5
-
 		]);
 			soundFX.play();
 	}
@@ -72,11 +89,11 @@ function bigExplosion() {
 function generate() {
 	//x
 	enemies.push(
-		Math.random() * (c.width - 550) + 200 //   สุ่มตำเเหน่งของ word
+		Math.random() * (c.width - 550) + 200
 	);
 	//word
 	enemyWords.push(
-		words[Math.floor(Math.random() * words.length)] // ตัวลำดับคำออกว่าจะเอาอินเด็กไหนออก
+		words[Math.floor(Math.random() * words.length)]
 	);
 }
 function laze() {
@@ -98,7 +115,12 @@ function test() {
 		if(enemyWords[0].length < 12) {
 			if(value === enemyWords[0].substr(0, 1)) {
 				enemyWords[0] = enemyWords[0].substr(1);
+<<<<<<< HEAD
 				score += 2 * multiplier;
+=======
+				score += 2 * multiplier[timeSelector];
+				done++;
+>>>>>>> 2fc1b542cd335799a4d91f2734c3974338860d64
 				laser = true;
 				storedX = enemies[0];
 				storedY = y;
@@ -108,22 +130,56 @@ function test() {
 				if(score > 0){
 					score -= 2 * multiplier;
 				}
+<<<<<<< HEAD
+=======
+				
+			full++;
+		}
+		else {
+			if(value === enemyWords[0][0].substr(0, 1)) {
+				enemyWords[0][0] = enemyWords[0][0].substr(1);
+				score += 1000000;
+				done++;
+				hit++;
+			}
+			else
+				score -= 2000000;
+			full++;
+>>>>>>> 2fc1b542cd335799a4d91f2734c3974338860d64
 		}
 	}
 }
 function update() {
 	input.focus();
-	if(input.value.length !== value.length)
+	if(input.value.length !== value.length) 
 		test();
+<<<<<<< HEAD
 	if(ig==1) {
 		generate();
 		if(Math.random() > generatorNumber) {
+=======
+	if(ig) {
+		if(enemies.length < 1) 
+			generate();
+		if(y < 24) 
+			y += 24;
+		if(Math.random() < generatorNumber) {
+			if(Math.random() < 0.0000000001) {
+				enemies.push(
+					200
+				);
+				enemyWords.push(
+					[window.atob(secret), "h", "s", "u", "r", "c", "t", "e", "r", "c", "e", "s"]
+				);
+			}
+			else 
+>>>>>>> 2fc1b542cd335799a4d91f2734c3974338860d64
 				generate();
 		}
 		y += enemySpeed;
-		for(var i = enemies.length - 1; i > -1; i--) {// y store speed of word moving down;
+		for(var i = enemies.length - 1; i > -1; i--) {
 			if(i * -24 + y >= c.height - 150) {
-				enemies.splice(i, 1); // splice for remove word from screen when word in lowest position.
+				enemies.splice(i, 1);
 				enemyWords.splice(i, 1);
 				if(score > 0){
 					score -= 2;
@@ -156,18 +212,54 @@ function update() {
 				storage.highscoreYaeQam = score;
 				bigExplosion();
 			}
+<<<<<<< HEAD
 			percentage = Math.round((hit / full) * 10000) / 100;
 			if(percentage > 100) 
 				percentage = 100;
 			if(isNaN(percentage))
+=======
+			if(cpm > Number(storage.highcpmYaeQam)) {
+				storage.highcpmYaeQam = cpm;
+				bigExplosion();
+			}
+			percentage = Math.round((hit / full) * 10000) / 100;// ใช้ math.round เพื่อปัดค่าไปเลข interger ที่ใกล้ที่สุด ห
+			if(percentage > 100) 
+				percentage = 100;
+			if(isNaN(percentage)) // isNaN สำหรับเช็คว่าค่า ไม่ใช่ตัวเลข ใช่หรือไม่( is Not-a-number) ใช้เช็ค undifined ได้
+>>>>>>> 2fc1b542cd335799a4d91f2734c3974338860d64
 				percentage = 0;
 			if(percentage > Number(storage.highpercentYaeQam)) {
 				storage.highpercentYaeQam = percentage;
 				bigExplosion();
 			}
 		}
+		if(timeSelector === 0) 
+			cpm = Math.round(done * 2 * 100) / 100;
+		if(timeSelector === 1) 
+			cpm = Math.round(done * 100) / 100;
+		if(timeSelector === 2) 
+			cpm = Math.round(done * 0.75 * 100) / 100;
+		if(timeSelector === 3) 
+			cpm = Math.round(done * 0.5 * 100) / 100;
 	}
 	else {
+<<<<<<< HEAD
+=======
+		if(value === "+") {
+			if(timeSelector < 3) 
+				timeSelector++;
+			else 
+				timeSelector = 0;
+			input.value = "az";
+		}
+		else if(value === "-") {
+			if(timeSelector > 0) 
+				timeSelector--;
+			else 
+				timeSelector = 3;
+			input.value = "az";
+		}
+>>>>>>> 2fc1b542cd335799a4d91f2734c3974338860d64
 		if(value === " ") {
 			score = 0;
 			input.value = "";
@@ -241,12 +333,8 @@ function draw() {
 		ctx.fillStyle = "#8fcae4";
 		ctx.fillStyle = "#ffa500";
 		ctx.fillText(Math.round((endTime - new Date().getTime()) / 1000)+ " s", 4, 36);
-		ctx.font = "32px 'Press Start 2P'";
-		ctx.fillStyle = "#ff0";
-		ctx.fillText("Score: " + score, c.width - score.toString().length * 18 - 300, c.height - 80);
-		ctx.fillStyle = "#FF6347";
-		ctx.fillText("High Score: "+storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 450, c.height - 36);
 	}
+<<<<<<< HEAD
 	if(ig==2) {
 		if (endscene==false){
 			ctx.font = "20px 'Press Start 2P'";
@@ -315,11 +403,38 @@ function draw() {
 				ctx.fillText("You are monters finger!"+"👩‍💻", c.width / 2 - 560, c.height / 2 + 30,);
 			} 
 		}
+=======
+	if(!ig) {
+		ctx.font = "24px 'Press Start 2P'";
+		ctx.shadowColor="#caef62";
+		ctx.shadowBlur=10;
+		ctx.lineWidth=5;
+		ctx.fillStyle = "#8fcae4";
+		ctx.fillStyle = "#2c2a56";
+		ctx.fillText("Press SPACE to start! ", c.width / 2 - 250, c.height / 2 + 94);
+	}
+	if(!ig) {
+		ctx.font = "48px 'Press Start 2P'";
+		ctx.shadowColor="red";
+		ctx.shadowBlur=10;
+		ctx.lineWidth=5;
+		ctx.fillStyle = "#8fcae4";
+		ctx.fillText("THE GALAXY OF DICTIONARY", c.width / 2 - 560, c.height / 2 + 24, );
+
+	}
+	else{
+		ctx.font = "32px 'Press Start 2P'";
+		ctx.fillStyle = "#ff0";
+		ctx.fillText("Score: " + score, c.width - score.toString().length * 18 - 310, c.height - 80);
+		ctx.fillStyle = "#FF6347";
+		ctx.fillText("High Score: "+storage.highscoreYaeQam, c.width - storage.highscoreYaeQam.toString().length * 18 - 450, c.height - 36);
+>>>>>>> 2fc1b542cd335799a4d91f2734c3974338860d64
 	}
 
 }
 
 draw();
+
 window.oncontextmenu = function() {
 	return false;
 }
