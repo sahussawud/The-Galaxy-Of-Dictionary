@@ -3,9 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Typeriods</title>
+  <title>THE GALAXY OF DICTIONARY</title>
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   
   
       <link rel="stylesheet" href="Project.css">
@@ -13,31 +12,18 @@
 </head>
 
 <body background ="pic3.gif">
-	<img src="jet.gif">
     <iframe src="./backgroundmc.mp3" allow="autoplay" style="display:none" id="iframeAudio">
     </iframe>
-
+	<img src="jet.gif">
   <canvas id = "c"></canvas>
 <input id = "input"/>
-  <!-- <audio autoplay loop> -->
-<!--   <source src="https://raw.githubusercontent.com/sahussawud/Multi-Tech-Game/master/backgroundmc.mp3" type="audio/mpeg">
-Your browser does not support the audio element.
+
+<audio controls loop autoplay hidden>
+  <source src="./backgroundmc.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
 </audio>
-   -->
+
 
     <script src="Project.js"></script>
-    <script type="text/javascript">
-        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-            if(!isChrome){
-      $('#iframeAudio').remove()
-    }
-    else{
-        $('#playAudio').remove() //just to make sure that it will not have 2x audio in the background 
-  }
-</script>
-
-
-
 </body>
-
 </html>
