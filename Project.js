@@ -32,6 +32,7 @@ var sx = [],
 	ss = [];
 var soundFX;
 var shot;
+var state = 0;
 
 function preload(){
 	soundFX = new Audio('./music/Lazerbeam3.wav');
@@ -124,6 +125,7 @@ function test() {
 }
 function update() {
 	input.focus();
+	state += 1;
 	if(input.value.length !== value.length) 
 		test();
 	if(status==1) {
@@ -177,34 +179,20 @@ function update() {
 		}
 	}
 	else {
-		if(value === "+") {
-			if(timeSelector < 3) 
-				timeSelector++;
-			else 
-				timeSelector = 0;
-			input.value = "az";
-		}
-		else if(value === "-") {
-			if(timeSelector > 0) 
-				timeSelector--;
-			else 
-				timeSelector = 3;
-			input.value = "az";
-		}
 		if(value === " ") {
-			score = 0;
-			input.value = "";
-			enemies = [];
-			enemyWords = [];
-			generatorNumber = 0.1;
-			enemySpeed = 0.35;
-			done = 0;
-			y = 0;
-			hit = 0;
-			full = 0;
-			startTime = new Date().getTime();
-			endTime = startTime + time;
-			status = 1;
+				score = 0;
+				input.value = "";
+				enemies = [];
+				enemyWords = [];
+				generatorNumber = 0.1;
+				enemySpeed = 0.35;
+				done = 0;
+				y = 0;
+				hit = 0;
+				full = 0;
+				startTime = new Date().getTime();
+				endTime = startTime + time;
+				status = 1;
 		}
 	}
 	for(var i = 0; i < smallSparks.length; i++) {
@@ -275,18 +263,6 @@ function draw() {
 	}
 	if(status==2) {
 		if (endscene==false){
-			canvastext.font = "20px 'Press Start 2P'";
-
-			canvastext.fillStyle = "#FFEB3B";
-			canvastext.fillText("HOW TO PLAY!", canvas.width / 2 - 100, canvas.height / 2 - +300);
-			canvastext.font = "15px 'Press Start 2P'";
-			canvastext.fillText("1.The word will fall down from top of your screen.", canvas.width / 4 + 25, canvas.height / 2 - +250);
-			canvastext.fillText("2.Your have to type following the stress word.", canvas.width / 4 +25, canvas.height / 2 - +200);
-			canvastext.fillText("3.prevent words passing the spaceship", canvas.width / 4 +25, canvas.height / 2 - +150);
-			canvastext.fillText("4.Show me your talent typing skill, Let's SPACE now!!!", canvas.width / 4 +25, canvas.height / 2 - +100);
-
-
-
 			canvastext.font = "24px 'Press Start 2P'";
 			canvastext.shadowColor="#caef62";
 			canvastext.shadowBlur=10;
@@ -345,9 +321,7 @@ function draw() {
 	}
 
 }
-
 draw();
-
 window.oncontextmenu = function() {
 	return false;
 }
