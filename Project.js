@@ -34,7 +34,7 @@ var soundFX;
 var shot;
 
 function preload(){
-	soundFX = new Audio('./Lazerbeam3.wav');
+	soundFX = new Audio('./music/Lazerbeam3.wav');
 }
 preload();
 for(var i = 0; i < 250; i++) {
@@ -57,7 +57,7 @@ function clear() {
 	}
 }
 function smallExplosion() {
-	for(var i = 0; i < 100; i++) {
+	for(var i = 0; i < 30; i++) {
 		//x, y, sideMovement, downSpeed
 		smallSparks.push([
 			storedX,
@@ -234,14 +234,17 @@ function draw() {
 	}
 	if(status==1) {
 		laze();
-		canvastext.font = " 32px 'Press Start 2P'";
-		canvastext.fillStyle = "#fff";
-		canvastext.fillText(value, canvas.width / 2 - 12, canvas.height - 45);
 		canvastext.font = "32px 'Press Start 2P'";
 		for(var i = enemies.length - 1; i > -1; i--) {
-			if(i < 1) {
+			if(i == 1) {
 				if(enemyWords[i].length < 12)
-					canvastext.fillStyle = "#f1bdf1";
+					canvastext.fillStyle = "#f44336";
+				else 
+					canvastext.fillStyle = "#c03f0e0";
+			}
+			else if(i == 0) {
+				if(enemyWords[i].length < 12)
+					canvastext.fillStyle = "#ffeb3b";
 				else 
 					canvastext.fillStyle = "#c03f0e0";
 			}
@@ -320,7 +323,7 @@ function draw() {
 			canvastext.fillStyle = "#FF6347";
 			canvastext.fillText("High Score: "+storage.highscoreYaeQam, canvas.width /3, canvas.height / 2 - 180);
 			canvastext.fillStyle = "#ff0";
-			canvastext.fillText("Your Score: " + score, canvas.width /3 + 20, canvas.height / 2 - 110);
+			canvastext.fillText("Your Score: " + score, canvas.width /3 , canvas.height / 2 - 110);
 			if(storage.highscoreYaeQam > score){
 				canvastext.font = "48px 'Press Start 2P'";
 				canvastext.shadowColor="red";
