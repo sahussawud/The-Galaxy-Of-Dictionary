@@ -194,6 +194,7 @@ function update() {
 				endTime = startTime + time;
 				status = 1;
 				document.querySelector('#box').style.display = "none";
+				document.querySelector('img').style.display = "inline";
 		}
 	}
 	for(var i = 0; i < smallSparks.length; i++) {
