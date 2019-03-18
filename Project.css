@@ -50,11 +50,12 @@ img{
 	position: absolute;
 	font-family: 'Press Start 2P';
 	font-size: 10px;
-	line-height: 10px;
+	line-height: 11px;
 	color: white;
 	z-index:2;
 	transition: 3s;
 	padding: 10px;
+	opacity: 70%;
 }
 p{
 	text-align: center;

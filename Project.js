@@ -193,6 +193,7 @@ function update() {
 				startTime = new Date().getTime();
 				endTime = startTime + time;
 				status = 1;
+				document.querySelector('#box').style.display = "none";
 		}
 	}
 	for(var i = 0; i < smallSparks.length; i++) {
@@ -321,6 +322,7 @@ function draw() {
 	}
 
 }
+
 draw();
 window.oncontextmenu = function() {
 	return false;
