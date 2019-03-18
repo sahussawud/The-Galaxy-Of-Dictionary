@@ -66,6 +66,7 @@ function smallExplosion() {
 			Math.random() * 8 - 4,
 			Math.random() * 25 + 5
 		]);
+			soundFX.currentTime = 0;
 			soundFX.play();
 	}
 
