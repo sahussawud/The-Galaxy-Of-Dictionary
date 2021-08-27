@@ -45,6 +45,8 @@
     4. สิ่งที่สำคัญที่สุดที่เป็น การจัดการกับความเครียดที่เกิดขึ้นระหว่างงาน สิ่งที่เกิดขึ้นกับพวกผมคือ การไม่สามารถขับเคลื่อนโปรเจ็กไปต่อได้ในช่วงเเรกๆ
   ของการเริ่มทำ เเต่เราก็ผ่านมากันได้เพราะความร่วมมือกัน ช่วยกัน หาทางออกจนในที่สุดเกมก็เสร็จสมบูรณ์ตามเป้าหมายที่ตั้งไว้
   </p>
-<p>INSPIRATION FROM : https://www.youtube.com/watch?v=KwplP8oSUZs&fbclid=IwAR0uCriDXWxzAtWaKBmgM1kw5CkBKTB3kFmAdB3A7c_suoKhnsNjpTeEoi4 <Alphabet Fall Typing Games>.</p></br>
+<p>INSPIRATION FROM : https://www.youtube.com/watch?v=KwplP8oSUZs&fbclid=IwAR0uCriDXWxzAtWaKBmgM1kw5CkBKTB3kFmAdB3A7c_suoKhnsNjpTeEoi4 <Alphabet Fall Typing Games>.</p>
+<p>GAME URL : https://sahussawud.github.io/The-Galaxy-Of-Dictionary/ 
+
 
 
